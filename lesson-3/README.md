@@ -317,9 +317,7 @@ def change(crd):
         while i > replicas:
             pod = crd['state']['pods'].pop()
             print('[%s] Removing pod %s .' % (name, pod))
-            v1.delete_namespaced_pod(pod,
-                                     namespace,
-                                     client.V1DeleteOptions())
+            v1.delete_namespaced_pod(pod, namespace)
             i -= 1
     elif i < replicas:
         while i <= replicas:
